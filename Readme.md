@@ -39,8 +39,7 @@ bin/hdfs dfs -ls /
 bin/hdfs dfs -rm -r <output_dir>
 
 # Run job
-# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /<language>/<book>.txt <output_dir>
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /Test/test.txt output
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /<language>/<book>.txt <output_dir>
 
 # Check the output
 bin/hdfs dfs -cat output/*
@@ -55,7 +54,7 @@ bin/hdfs dfs -rm -r <output_dir>
 exit
 
 # Copy from hadoop
-docker cp loving_nightingale:/tmp/output output
+docker cp <container_name>:/tmp/output output
 ```
 
 # Run Local
