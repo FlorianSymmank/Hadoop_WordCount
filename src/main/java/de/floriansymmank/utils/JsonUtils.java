@@ -5,8 +5,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.hadoop.mapreduce.TaskInputOutputContext;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JsonUtils {
@@ -14,10 +19,10 @@ public class JsonUtils {
     /**
      * Loads a JSON file from the distributed cache and returns a JSONObject.
      *
-     * @param context  The Hadoop Context (Mapper or Reducer).
+     * @param context The Hadoop Context (Mapper or Reducer).
      * @param filename The name of the JSON file added to the distributed cache.
      * @return JSONObject representing the JSON data.
-     * @throws IOException          If an I/O error occurs.
+     * @throws IOException If an I/O error occurs.
      * @throws InterruptedException If the context is interrupted.
      */
     public static JSONObject loadJsonFile(TaskInputOutputContext<?, ?, ?, ?> context, String filename)
@@ -64,5 +69,30 @@ public class JsonUtils {
         }
 
         return new JSONObject(jsonContent.toString());
+    }
+    /**
+     * Converts a JSONObject to a Map<String, List<String>>.
+     * 
+     * @param jsonObject The JSONObject to convert.
+     * @return Map<String, List<String>> representing the JSON data.
+     */
+    public static Map<String, List<String>> convertJsonToMap(JSONObject jsonObject) {
+        Map<String, List<String>> resultMap = new HashMap<>();
+
+        for (String key : jsonObject.keySet()) {
+            // Get the JSONArray associated with the key
+            JSONArray jsonArray = jsonObject.getJSONArray(key);
+
+            // Convert JSONArray to List<String>
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < jsonArray.length(); i++) {
+                list.add(jsonArray.getString(i));
+            }
+
+            // Put the key and list into the map
+            resultMap.put(key, list);
+        }
+
+        return resultMap;
     }
 }
