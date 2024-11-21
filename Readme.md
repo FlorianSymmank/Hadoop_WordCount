@@ -24,6 +24,7 @@ docker exec -it <container_name> /bin/bash
 ```
 # Copy data to hadoop
 docker cp data <container_name>:/usr/local/hadoop/fs/data
+docker cp stopwords/stopwords-combined.json <container_name>:/usr/local/hadoop/fs/data
 
 # Copy jar
 docker cp target/hadoop_wordcount-1.0-SNAPSHOT.jar <container_name>:/usr/local/hadoop/fs/hadoop_wordcount.jar
