@@ -55,7 +55,6 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-data/*
 output/*
 examples/*
 # Byte-compiled / optimized / DLL files
