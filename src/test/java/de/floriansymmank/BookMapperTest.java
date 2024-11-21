@@ -42,8 +42,5 @@ public class BookMapperTest {
         verify(context).write(new Text("und"), new IntWritable(1));
         verify(context).write(new Text("Webseite"), new IntWritable(1));
         verify(context).write(new Text("www"), new IntWritable(1));
-
-
-
     }
 }
