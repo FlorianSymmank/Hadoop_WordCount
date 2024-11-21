@@ -42,7 +42,7 @@ bin/hdfs dfs -ls /
 bin/hdfs dfs -rm -r <output_dir>
 
 # Run job
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /<language>/<book>.txt <output_dir>
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /<language>/<book>.txt <output_dir> <stopword_file>
 
 # Check the output
 bin/hdfs dfs -cat output/*
