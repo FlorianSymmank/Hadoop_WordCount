@@ -13,12 +13,14 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if (args.length != 3) {
-            System.err.println("Usage: WordCounter <input path> <output path> <stopwords path>");
-            System.exit(-1);
-        }
+        // if (args.length != 3) {
+        //     System.err.println("Usage: WordCounter <input path> <output path> <stopwords path>");
+        //     System.exit(-1);
+        // }
 
         Configuration conf = new Configuration();
+        conf.set("stopWordsPath", args[2]);
+
         Job job = Job.getInstance(conf, "Word Counter");
 
         job.setJarByClass(de.floriansymmank.Main.class);
@@ -48,12 +50,11 @@ public class Main {
         
         // Add the JSON stopwords file to the distributed cache
         job.addCacheFile(new Path(args[2]).toUri());
-
+        
         try {
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         } catch (InterruptedException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }

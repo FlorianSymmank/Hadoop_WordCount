@@ -38,9 +38,9 @@ public class JsonUtils {
                 String cacheFileName = file.getName();
 
                 // Check if this is the file we are looking for
-                if (cacheFileName.equals(filename)) {
+                if (cacheFileName.equals(new File(filename).getName())) {
                     // Load the JSON file and return the JSONObject
-                    return loadJsonFromFile(file.getPath());
+                    return loadJsonFromFile(cacheFileName);
                 }
             }
         }
@@ -55,8 +55,8 @@ public class JsonUtils {
      * @return JSONObject representing the JSON data.
      * @throws IOException If an I/O error occurs.
      */
-    static JSONObject loadJsonFromFile(String filePath) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+    static JSONObject loadJsonFromFile(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
         StringBuilder jsonContent = new StringBuilder();
         String line;
 

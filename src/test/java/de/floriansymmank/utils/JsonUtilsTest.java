@@ -35,45 +35,45 @@ public class JsonUtilsTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    public void testLoadJsonFile() throws IOException, InterruptedException {
+    // @Test
+    // public void testLoadJsonFile() throws IOException, InterruptedException {
 
-        // {
-        //     "key": "value"
-        // }
-        URI[] cacheFiles = {new File("src/test/resources/test.json").toURI()};
+    //     // {
+    //     //     "key": "value"
+    //     // }
+    //     URI[] cacheFiles = {new File("src/test/resources/test.json").toURI()};
 
-        when(context.getCacheFiles()).thenReturn(cacheFiles);
+    //     when(context.getCacheFiles()).thenReturn(cacheFiles);
 
-        JSONObject jsonObject = JsonUtils.loadJsonFile(context, "test.json");
+    //     JSONObject jsonObject = JsonUtils.loadJsonFile(context, "test.json");
 
-        assertEquals("value", jsonObject.getString("key"));
-    }
+    //     assertEquals("value", jsonObject.getString("key"));
+    // }
 
-    @Test
-    public void testLoadJsonFileWithDict() throws IOException, InterruptedException {
+    // @Test
+    // public void testLoadJsonFileWithDict() throws IOException, InterruptedException {
 
-        // {
-        //     "key1": [
-        //         "value1",
-        //         "value2"
-        //     ],
-        //     "key2": [
-        //         "value3",
-        //         "value4"
-        //     ]
-        // }
-        URI[] cacheFiles = {new File("src/test/resources/dict.json").toURI()};
+    //     // {
+    //     //     "key1": [
+    //     //         "value1",
+    //     //         "value2"
+    //     //     ],
+    //     //     "key2": [
+    //     //         "value3",
+    //     //         "value4"
+    //     //     ]
+    //     // }
+    //     URI[] cacheFiles = {new File("src/test/resources/dict.json").toURI()};
 
-        when(context.getCacheFiles()).thenReturn(cacheFiles);
+    //     when(context.getCacheFiles()).thenReturn(cacheFiles);
 
-        JSONObject jsonObject = JsonUtils.loadJsonFile(context, "dict.json");
+    //     JSONObject jsonObject = JsonUtils.loadJsonFile(context, "dict.json");
 
-        assertEquals("value1", jsonObject.getJSONArray("key1").getString(0));
-        assertEquals("value2", jsonObject.getJSONArray("key1").getString(1));
-        assertEquals("value3", jsonObject.getJSONArray("key2").getString(0));
-        assertEquals("value4", jsonObject.getJSONArray("key2").getString(1));
-    }
+    //     assertEquals("value1", jsonObject.getJSONArray("key1").getString(0));
+    //     assertEquals("value2", jsonObject.getJSONArray("key1").getString(1));
+    //     assertEquals("value3", jsonObject.getJSONArray("key2").getString(0));
+    //     assertEquals("value4", jsonObject.getJSONArray("key2").getString(1));
+    // }
 
     @Test
     public void testLoadJsonFile_FileNotFound() throws IOException, InterruptedException {

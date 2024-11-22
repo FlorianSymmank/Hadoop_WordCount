@@ -5,6 +5,9 @@
 # Setup
 `docker pull zoltannz/hadoop-ubuntu:2.8.1`  
 
+# dashboard
+`http://localhost:50070/dfshealth.html#tab-overview`
+
 # Enter
 ```
 docker run -it -p 2122:2122 -p 8020:8020 -p 8030:8030 -p 8040:8040 -p 8042:8042 -p  8088:8088 -p 9000:9000 -p 10020:10020 -p 19888:19888 -p 49707:49707 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 -p 50090:50090 zoltannz/hadoop-ubuntu:2.8.1 /etc/bootstrap.sh -bash
@@ -14,7 +17,7 @@ or
 
 ```
 docker ps
-docker exec -it <container_name> /bin/bash
+docker exec -it loving_nightingale /bin/bash
 ```
 
 # Build
@@ -23,26 +26,28 @@ docker exec -it <container_name> /bin/bash
 # Run Job
 ```
 # Copy data to hadoop
-docker cp data <container_name>:/usr/local/hadoop/fs/data
-docker cp stopwords/stopwords-combined.json <container_name>:/usr/local/hadoop/fs/data
+docker cp data loving_nightingale:/usr/local/hadoop/fs/
+docker cp stopwords/stopwords.json loving_nightingale:/usr/local/hadoop/fs/data/
 
 # Copy jar
-docker cp target/hadoop_wordcount-1.0-SNAPSHOT.jar <container_name>:/usr/local/hadoop/fs/hadoop_wordcount.jar
+docker cp target/hadoop_wordcount-1.0-SNAPSHOT.jar loving_nightingale:/usr/local/hadoop/fs/hadoop_wordcount.jar
 
 ## Enter hadoop
-docker exec -it -w /usr/local/hadoop <container_name> /bin/bash
+docker exec -it -w /usr/local/hadoop loving_nightingale /bin/bash
 
 # Upload input from hadoop to hdfs
 bin/hdfs dfs -put fs/data /
 
 # Verify files are uploaded
-bin/hdfs dfs -ls /
+bin/hdfs dfs -ls /data
 
 # Reset outdir
 bin/hdfs dfs -rm -r <output_dir>
 
 # Run job
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /<language>/<book>.txt <output_dir> <stopword_file>
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /data/<language>/<book>.txt <output_dir> /data/<stopword_file>
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /data/Test/test.txt /output /data/stopwords.json
 
 # Check the output
 bin/hdfs dfs -cat output/*
@@ -57,7 +62,7 @@ bin/hdfs dfs -rm -r <output_dir>
 exit
 
 # Copy from hadoop
-docker cp <container_name>:/tmp/output output
+docker cp loving_nightingale:/tmp/output output
 ```
 
 # Run Local

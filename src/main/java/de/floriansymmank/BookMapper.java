@@ -1,5 +1,6 @@
 package de.floriansymmank;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +24,22 @@ public class BookMapper extends Mapper<Object, Text, Text, IntWritable> {
             throws IOException, InterruptedException {
         super.setup(context);
 
+        String stopWordsPath = context.getConfiguration().get("stopWordsPath");
+        String stopWordsFileName = new File(stopWordsPath).getName();
+        
+
         // Load the stopwords from the distributed cache
-        JSONObject stopwords_json = JsonUtils.loadJsonFile(context, "stopwords.json");
+        JSONObject stopwords_json = JsonUtils.loadJsonFile(context, stopWordsFileName);
+
+        // System.out.println(stopwords_json.toString(4));
+
         Map<String, List<String>> stopwords = JsonUtils.convertJsonToMap(stopwords_json);
+
+        // for (String name : stopwords.keySet()) {
+        //     String key = name.toString();
+        //     String value = stopwords.get(name).toString();
+        //     System.out.println(key + " " + value);
+        // }
     }
 
     // Runs once for each key-value pair in the input split
@@ -34,7 +48,7 @@ public class BookMapper extends Mapper<Object, Text, Text, IntWritable> {
             throws IOException, InterruptedException {
         Pattern pattern = Pattern.compile("[\\p{L}|\\d]+");
         Matcher matcher = pattern.matcher(value.toString());
-                    
+
         while (matcher.find()) {
             context.write(new Text(matcher.group()), new IntWritable(1));
         }
