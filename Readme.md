@@ -26,7 +26,7 @@ docker exec -it loving_nightingale /bin/bash
 # Run Job
 ``` bash
 # Copy data to hadoop
-docker cp data loving_nightingale:/usr/local/hadoop/fs/ # bookdata
+docker cp data loving_nightingale:/usr/local/hadoop/fs/ # book-data, takes a while
 docker cp stopwords/stopwords.json loving_nightingale:/usr/local/hadoop/fs/data/ # stopwords
 
 # Copy jar
@@ -36,7 +36,7 @@ docker cp target/hadoop_wordcount-1.0-SNAPSHOT.jar loving_nightingale:/usr/local
 docker exec -it -w /usr/local/hadoop loving_nightingale /bin/bash
 
 # Upload input from hadoop to hdfs
-bin/hdfs dfs -put fs/data /
+bin/hdfs dfs -put fs/data / # takes a while
 
 # Verify files are uploaded
 bin/hdfs dfs -ls /data
@@ -45,13 +45,17 @@ bin/hdfs dfs -ls /data
 bin/hdfs dfs -rm -r /output/*
 
 # Run job
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver /data/Test/test.txt /output/wordcount /data/stopwords.json # first job: wordcount
+# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver /data/de/de.txt /output/de_wordcount /data/stopwords.json # first job: wordcount
 
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/wordcount/part-r-00000 /output/sorted # second job: sort by count
+# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_wordcount/part-r-00000 /output/de_sorted 
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver /data/<lang>/<lang>.txt /output/<lang>_wordcount /data/stopwords.json # first job: wordcount
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/<lang>_wordcount/part-r-00000 /output/<lang>_sorted # second job: sort by count
 
 # Check the output
-bin/hdfs dfs -cat /output/wordcount/*
-bin/hdfs dfs -cat /output/sorted/*
+bin/hdfs dfs -cat /output/<lang>_wordcount/*
+bin/hdfs dfs -cat /output/<lang>_sorted/*
 
 # Download result from hdfs to hadoop
 bin/hdfs dfs -get /output/* /tmp/output
