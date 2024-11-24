@@ -45,13 +45,13 @@ bin/hdfs dfs -ls /data
 bin/hdfs dfs -rm -r /output/*
 
 # Run job
-# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de.txt /output/de_wordcount /data/stopwords.json
+# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver <lang> /data/<lang>/<lang>.txt /output/<lang>_wordcount /data/stopwords.json # first job: wordcount
 
-# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_wordcount/part-r-00000 /output/de_sorted 
+# bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/<lang>_wordcount/part-r-00000 /output/<lang>_sorted # second job: sort by count
 
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver <lang> /data/<lang>/<lang>.txt /output/<lang>_wordcount /data/stopwords.json # first job: wordcount
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver uk /data/uk/uk.txt /output/uk_wordcount /data/stopwords.json
 
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/<lang>_wordcount/part-r-00000 /output/<lang>_sorted # second job: sort by count
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/uk_wordcount/part-r-00000 /output/uk_sorted 
 
 # Check the output
 bin/hdfs dfs -cat /output/<lang>_wordcount/*
