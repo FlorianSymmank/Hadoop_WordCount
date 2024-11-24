@@ -55,8 +55,6 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-output/*
-examples/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -230,3 +228,6 @@ cython_debug/
 /data/nl/nl.txt
 /data/ru/ru.txt
 /data/uk/uk.txt
+
+examples/*
+output/*/*
