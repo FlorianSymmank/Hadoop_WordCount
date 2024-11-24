@@ -13,13 +13,19 @@ public class WordCountDriver {
 
     public static void main(String[] args) throws IOException {
 
-        if (args.length != 3) {
-            System.err.println("Usage: WordCounter <input path> <output path> <stopwords path>");
+        if (args.length != 4) {
+            System.err.println("Usage: WordCounter <lang> <input path> <output path> <stopwords path>");
             System.exit(-1);
         }
+
+        String lang = args[0];
+        String inputPath = args[1];
+        String outputPath = args[2];
+        String stopWordsPath = args[3];
         
         Configuration conf = new Configuration();
-        conf.set("stopWordsPath", args[2]);
+        conf.set("lang", lang);
+        conf.set("stopWordsPath", stopWordsPath);
 
         Job job = Job.getInstance(conf, "Word Counter");
 
@@ -32,12 +38,12 @@ public class WordCountDriver {
 
         // Configure input
         job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
-        FileInputFormat.addInputPath(job, new org.apache.hadoop.fs.Path(args[0]));
+        FileInputFormat.addInputPath(job, new org.apache.hadoop.fs.Path(inputPath));
 
         // Configure output
         FileSystem fs = FileSystem.get(conf);
 
-        Path outDir = new Path(args[1]);
+        Path outDir = new Path(outputPath);
 
         if (fs.exists(outDir)) {
             fs.delete(outDir, true);
@@ -49,7 +55,7 @@ public class WordCountDriver {
         job.setOutputFormatClass(org.apache.hadoop.mapreduce.lib.output.TextOutputFormat.class);
 
         // Add the JSON stopwords file to the distributed cache
-        job.addCacheFile(new Path(args[2]).toUri());
+        job.addCacheFile(new Path(stopWordsPath).toUri());
 
         try {
             System.exit(job.waitForCompletion(true) ? 0 : 1);

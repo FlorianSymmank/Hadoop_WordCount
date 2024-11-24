@@ -19,6 +19,7 @@ public class WordCountMapperTest {
     @Before
     public void setUp() {
         bookMapper = new WordCountMapper();
+        bookMapper.stopwords = new java.util.HashSet<String>();
         context = mock(Mapper.Context.class);
     }
 
@@ -27,20 +28,44 @@ public class WordCountMapperTest {
         Text value = new Text("Dies ist ein Beispiel-Satz mit E-Mail-Adresse test@example.com und Webseite www.example.com.");
         bookMapper.map(null, value, context);
 
-        verify(context).write(new Text("Dies"), new IntWritable(1));
+        verify(context).write(new Text("dies"), new IntWritable(1));
         verify(context).write(new Text("ist"), new IntWritable(1));
         verify(context).write(new Text("ein"), new IntWritable(1));
-        verify(context).write(new Text("Beispiel"), new IntWritable(1));
-        verify(context).write(new Text("Satz"), new IntWritable(1));
+        verify(context).write(new Text("beispiel"), new IntWritable(1));
+        verify(context).write(new Text("satz"), new IntWritable(1));
         verify(context).write(new Text("mit"), new IntWritable(1));
-        verify(context).write(new Text("E"), new IntWritable(1));
-        verify(context).write(new Text("Mail"), new IntWritable(1));
-        verify(context).write(new Text("Adresse"), new IntWritable(1));
+        verify(context).write(new Text("e"), new IntWritable(1));
+        verify(context).write(new Text("mail"), new IntWritable(1));
+        verify(context).write(new Text("adresse"), new IntWritable(1));
         verify(context).write(new Text("test"), new IntWritable(1));
         verify(context, times(2)).write(new Text("example"), new IntWritable(1));
         verify(context, times(2)).write(new Text("com"), new IntWritable(1));
         verify(context).write(new Text("und"), new IntWritable(1));
-        verify(context).write(new Text("Webseite"), new IntWritable(1));
+        verify(context).write(new Text("webseite"), new IntWritable(1));
+        verify(context).write(new Text("www"), new IntWritable(1));
+    }
+
+    @Test
+    public void testMapWithStopWords() throws IOException, InterruptedException {
+
+        bookMapper.stopwords.add("ist");
+        bookMapper.stopwords.add("mit");
+        bookMapper.stopwords.add("und");
+
+        Text value = new Text("Dies ist ein Beispiel-Satz mit E-Mail-Adresse test@example.com und Webseite www.example.com.");
+        bookMapper.map(null, value, context);
+
+        verify(context).write(new Text("dies"), new IntWritable(1));
+        verify(context).write(new Text("ein"), new IntWritable(1));
+        verify(context).write(new Text("beispiel"), new IntWritable(1));
+        verify(context).write(new Text("satz"), new IntWritable(1));
+        verify(context).write(new Text("e"), new IntWritable(1));
+        verify(context).write(new Text("mail"), new IntWritable(1));
+        verify(context).write(new Text("adresse"), new IntWritable(1));
+        verify(context).write(new Text("test"), new IntWritable(1));
+        verify(context, times(2)).write(new Text("example"), new IntWritable(1));
+        verify(context, times(2)).write(new Text("com"), new IntWritable(1));
+        verify(context).write(new Text("webseite"), new IntWritable(1));
         verify(context).write(new Text("www"), new IntWritable(1));
     }
 }

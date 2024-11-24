@@ -2,8 +2,11 @@ package de.floriansymmank;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +19,7 @@ import de.floriansymmank.utils.JsonUtils;
 
 public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
 
-    private Map<String, List<String>> stopwords;
+    Set<String> stopwords;
 
     // Runs once at the beginning of the task
     @Override
@@ -27,19 +30,12 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
         String stopWordsPath = context.getConfiguration().get("stopWordsPath");
         String stopWordsFileName = new File(stopWordsPath).getName();
         
-
         // Load the stopwords from the distributed cache
         JSONObject stopwords_json = JsonUtils.loadJsonFile(context, stopWordsFileName);
 
-        // System.out.println(stopwords_json.toString(4));
-
-        Map<String, List<String>> stopwords = JsonUtils.convertJsonToMap(stopwords_json);
-
-        // for (String name : stopwords.keySet()) {
-        //     String key = name.toString();
-        //     String value = stopwords.get(name).toString();
-        //     System.out.println(key + " " + value);
-        // }
+        Map<String, List<String>> all_stopwords = JsonUtils.convertJsonToMap(stopwords_json);
+        List<String> stopWordsList = all_stopwords.get(context.getConfiguration().get("lang"));
+        stopwords = new HashSet<String>(stopWordsList);
     }
 
     // Runs once for each key-value pair in the input split
@@ -50,7 +46,10 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
         Matcher matcher = pattern.matcher(value.toString());
 
         while (matcher.find()) {
-            context.write(new Text(matcher.group()), new IntWritable(1));
+            String word = matcher.group().toLowerCase(Locale.ROOT);
+            if (stopwords.contains(word))
+                continue;
+            context.write(new Text(word), new IntWritable(1));
         }
     }
 
