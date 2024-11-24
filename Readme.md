@@ -42,28 +42,28 @@ bin/hdfs dfs -put fs/data /
 bin/hdfs dfs -ls /data
 
 # Reset outdir
-bin/hdfs dfs -rm -r <output_dir>
+bin/hdfs dfs -rm -r /output/*
 
 # Run job
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /data/<language>/<book>.txt <output_dir> /data/<stopword_file>
-
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.Main /data/Test/test.txt /output /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver /data/Test/test.txt /output/wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/wordcount/part-r-00000 /output/sorted
 
 # Check the output
-bin/hdfs dfs -cat output/*
+bin/hdfs dfs -cat /output/wordcount/*
+bin/hdfs dfs -cat /output/sorted/*
 
 # Download result from hdfs to hadoop
-bin/hdfs dfs -get output /tmp/output
+bin/hdfs dfs -get /output/* /tmp/output
 
 # Reset outdir
-bin/hdfs dfs -rm -r <output_dir>
+bin/hdfs dfs -rm -r /output/*
 
 ## Exit hadoop
 exit
 
 # Copy from hadoop
-docker cp loving_nightingale:/tmp/output output
+docker cp loving_nightingale:/tmp/output .
 ```
 
 # Run Local
-`java -cp hadoop_wordcount-1.0-SNAPSHOT.jar de.floriansymmank.Main`
+`java -cp hadoop_wordcount-1.0-SNAPSHOT.jar de.floriansymmank.WordCountDriver <> <> <>`
