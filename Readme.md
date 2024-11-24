@@ -24,10 +24,10 @@ docker exec -it loving_nightingale /bin/bash
 [F1] -> Tasks: Run Task -> Maven Build
 
 # Run Job
-```
+``` bash
 # Copy data to hadoop
-docker cp data loving_nightingale:/usr/local/hadoop/fs/
-docker cp stopwords/stopwords.json loving_nightingale:/usr/local/hadoop/fs/data/
+docker cp data loving_nightingale:/usr/local/hadoop/fs/ # bookdata
+docker cp stopwords/stopwords.json loving_nightingale:/usr/local/hadoop/fs/data/ # stopwords
 
 # Copy jar
 docker cp target/hadoop_wordcount-1.0-SNAPSHOT.jar loving_nightingale:/usr/local/hadoop/fs/hadoop_wordcount.jar
@@ -45,8 +45,9 @@ bin/hdfs dfs -ls /data
 bin/hdfs dfs -rm -r /output/*
 
 # Run job
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver /data/Test/test.txt /output/wordcount /data/stopwords.json
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/wordcount/part-r-00000 /output/sorted
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver /data/Test/test.txt /output/wordcount /data/stopwords.json # first job: wordcount
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/wordcount/part-r-00000 /output/sorted # second job: sort by count
 
 # Check the output
 bin/hdfs dfs -cat /output/wordcount/*
