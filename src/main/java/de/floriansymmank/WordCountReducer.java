@@ -16,14 +16,13 @@ public class WordCountReducer extends Reducer<Text, IntWritable, Text, IntWritab
     }
 
     @Override
-    protected void reduce(Text arg0, Iterable<IntWritable> arg1,
-            Reducer<Text, IntWritable, Text, IntWritable>.Context arg2) throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
 
         int sum = 0;
-        for (IntWritable value : arg1) {
+        for (IntWritable value : values) {
             sum += value.get();
         }
-        arg2.write(arg0, new IntWritable(sum));
+        context.write(key, new IntWritable(sum));
     }
 
     // runs once at the end of the task
