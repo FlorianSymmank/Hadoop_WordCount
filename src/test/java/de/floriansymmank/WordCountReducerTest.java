@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import org.mockito.MockitoAnnotations;
 
-public class BookReducerTest {
+public class WordCountReducerTest {
 
-    private BookReducer reducer;
+    private WordCountReducer reducer;
 
     @Mock
     private Reducer<Text, IntWritable, Text, IntWritable>.Context context;
@@ -22,7 +22,7 @@ public class BookReducerTest {
     @Before
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        reducer = new BookReducer();
+        reducer = new WordCountReducer();
     }
 
     @Test

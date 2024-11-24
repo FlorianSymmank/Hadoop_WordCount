@@ -11,14 +11,14 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-public class BookMapperTest {
+public class WordCountMapperTest {
 
-    private de.floriansymmank.BookMapper bookMapper;
+    private de.floriansymmank.WordCountMapper bookMapper;
     private Mapper<Object, Text, Text, IntWritable>.Context context;
 
     @Before
     public void setUp() {
-        bookMapper = new BookMapper();
+        bookMapper = new WordCountMapper();
         context = mock(Mapper.Context.class);
     }
 

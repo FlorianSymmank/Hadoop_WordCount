@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import de.floriansymmank.utils.JsonUtils;
 
-public class BookMapper extends Mapper<Object, Text, Text, IntWritable> {
+public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
 
     private Map<String, List<String>> stopwords;
 
