@@ -51,5 +51,5 @@ for k, v in combined.items():
 
 
 # write to file
-with open('stopwords-combined.json', 'w', encoding="UTF-8") as file:
+with open('stopwords.json', 'w', encoding="UTF-8") as file:
     json.dump(combined, file, ensure_ascii=False, indent=4)
