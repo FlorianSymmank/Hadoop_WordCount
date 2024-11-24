@@ -10,5 +10,5 @@ Sources:
 To combine the stopwords from the above sources, the following steps were followed:
 - Download the stopwords from the above sources.
 - Create python environment and install the required packages. (`pip install -r requirements.txt`)
-- Run the `combine_stopwords.py` script to combine the stopwords from the above sources.
-- The combined stopwords are saved in the `combined.json` file.
+- Run the `combine.py` script to combine the stopwords from the above sources.
+- The combined stopwords are saved in the `stopwords.json` file.
