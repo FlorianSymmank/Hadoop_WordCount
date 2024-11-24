@@ -1,4 +1,4 @@
-This director contains the stopwords for the project.
+This directory contains the stopwords for the project.
 
 The stopwords are used to remove the common words from the text data. This is done to reduce the noise in the data.
 
