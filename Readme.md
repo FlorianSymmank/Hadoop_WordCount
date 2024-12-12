@@ -36,7 +36,15 @@ docker cp target/hadoop_wordcount-1.0-SNAPSHOT.jar loving_nightingale:/usr/local
 docker exec -it -w /usr/local/hadoop loving_nightingale /bin/bash
 
 # Upload input from hadoop to hdfs
-bin/hdfs dfs -put fs/data / # takes a while
+# takes a while
+bin/hdfs dfs -put fs/data/de
+bin/hdfs dfs -put fs/data/en
+bin/hdfs dfs -put fs/data/es
+bin/hdfs dfs -put fs/data/fr
+bin/hdfs dfs -put fs/data/it
+bin/hdfs dfs -put fs/data/nl
+bin/hdfs dfs -put fs/data/ru
+bin/hdfs dfs -put fs/data/uk
 
 # Verify files are uploaded
 bin/hdfs dfs -ls /data
