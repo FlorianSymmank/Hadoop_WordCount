@@ -1,0 +1,209 @@
+{
+    "de_sorted": {
+        "output_file": "de_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "2354375",
+        "total_keys": "157706",
+        "elapsed_time": "12709",
+        "keys_per_minute": "744540",
+        "language": "de"
+    },
+    "de_10_sorted": {
+        "output_file": "de_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1171997",
+        "total_keys": "87829",
+        "elapsed_time": "12755",
+        "keys_per_minute": "413151",
+        "language": "de"
+    },
+    "de_100_sorted": {
+        "output_file": "de_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "2199392",
+        "total_keys": "157706",
+        "elapsed_time": "12792",
+        "keys_per_minute": "739709",
+        "language": "de"
+    },
+    "en_sorted": {
+        "output_file": "en_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "683274",
+        "total_keys": "55363",
+        "elapsed_time": "12733",
+        "keys_per_minute": "260880",
+        "language": "en"
+    },
+    "en_10_sorted": {
+        "output_file": "en_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "393943",
+        "total_keys": "36297",
+        "elapsed_time": "11726",
+        "keys_per_minute": "185726",
+        "language": "en"
+    },
+    "en_100_sorted": {
+        "output_file": "en_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "627360",
+        "total_keys": "55363",
+        "elapsed_time": "13363",
+        "keys_per_minute": "248580",
+        "language": "en"
+    },
+    "es_sorted": {
+        "output_file": "es_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "928624",
+        "total_keys": "66972",
+        "elapsed_time": "12742",
+        "keys_per_minute": "315360",
+        "language": "es"
+    },
+    "es_10_sorted": {
+        "output_file": "es_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "795720",
+        "total_keys": "66972",
+        "elapsed_time": "12754",
+        "keys_per_minute": "315064",
+        "language": "es"
+    },
+    "es_100_sorted": {
+        "output_file": "es_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "861613",
+        "total_keys": "66972",
+        "elapsed_time": "12717",
+        "keys_per_minute": "315980",
+        "language": "es"
+    },
+    "fr_sorted": {
+        "output_file": "fr_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1042169",
+        "total_keys": "78679",
+        "elapsed_time": "11759",
+        "keys_per_minute": "401458",
+        "language": "fr"
+    },
+    "fr_10_sorted": {
+        "output_file": "fr_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "588263",
+        "total_keys": "49709",
+        "elapsed_time": "12711",
+        "keys_per_minute": "234642",
+        "language": "fr"
+    },
+    "fr_100_sorted": {
+        "output_file": "fr_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "964761",
+        "total_keys": "78679",
+        "elapsed_time": "11776",
+        "keys_per_minute": "400878",
+        "language": "fr"
+    },
+    "it_sorted": {
+        "output_file": "it_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1345159",
+        "total_keys": "99164",
+        "elapsed_time": "11719",
+        "keys_per_minute": "507709",
+        "language": "it"
+    },
+    "it_10_sorted": {
+        "output_file": "it_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "826620",
+        "total_keys": "69403",
+        "elapsed_time": "12712",
+        "keys_per_minute": "327579",
+        "language": "it"
+    },
+    "it_100_sorted": {
+        "output_file": "it_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1245727",
+        "total_keys": "99164",
+        "elapsed_time": "12727",
+        "keys_per_minute": "467497",
+        "language": "it"
+    },
+    "nl_sorted": {
+        "output_file": "nl_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "171251",
+        "total_keys": "12180",
+        "elapsed_time": "12743",
+        "keys_per_minute": "57349",
+        "language": "nl"
+    },
+    "nl_10_sorted": {
+        "output_file": "nl_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "146888",
+        "total_keys": "12180",
+        "elapsed_time": "11772",
+        "keys_per_minute": "62080",
+        "language": "nl"
+    },
+    "nl_100_sorted": {
+        "output_file": "nl_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "159066",
+        "total_keys": "12180",
+        "elapsed_time": "12847",
+        "keys_per_minute": "56885",
+        "language": "nl"
+    },
+    "ru_sorted": {
+        "output_file": "ru_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1258574",
+        "total_keys": "60078",
+        "elapsed_time": "12702",
+        "keys_per_minute": "283788",
+        "language": "ru"
+    },
+    "ru_10_sorted": {
+        "output_file": "ru_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1137569",
+        "total_keys": "60078",
+        "elapsed_time": "11732",
+        "keys_per_minute": "307252",
+        "language": "ru"
+    },
+    "ru_100_sorted": {
+        "output_file": "ru_100_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1198471",
+        "total_keys": "60078",
+        "elapsed_time": "12707",
+        "keys_per_minute": "283677",
+        "language": "ru"
+    },
+    "uk_sorted": {
+        "output_file": "uk_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1936617",
+        "total_keys": "95341",
+        "elapsed_time": "12715",
+        "keys_per_minute": "449899",
+        "language": "uk"
+    },
+    "uk_10_sorted": {
+        "output_file": "uk_10_sorted",
+        "input_file": "part-r-00000",
+        "input_file_size": "1745593",
+        "total_keys": "95341",
+        "elapsed_time": "11744",
+        "keys_per_minute": "487096",
+        "language": "uk"
+    }
+}

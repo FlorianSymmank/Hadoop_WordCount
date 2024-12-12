@@ -1,0 +1,13 @@
+Input File: de.txt
+Input File Size (bytes): 1081019587
+Language: de
+Total Words: 72169021
+Elapsed Time (ms): 39794
+Words per Minute: 108813923
+
+Output File: de_sorted
+Input File: part-r-00000
+Input File Size (bytes): 2354375
+Total Keys: 157706
+Elapsed Time (ms): 11711
+Keys per Minute: 807989
