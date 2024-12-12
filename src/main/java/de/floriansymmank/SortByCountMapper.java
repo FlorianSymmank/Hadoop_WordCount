@@ -19,6 +19,9 @@ public class SortByCountMapper extends Mapper<Object, Text, CompositeKey, NullWr
             int count = Integer.parseInt(parts[1]);
             compositeKey = new CompositeKey(count, word);
             context.write(compositeKey, NullWritable.get());
+            return;
         }
+
+        throw new IOException("Invalid input format: " + value.toString());
     }
 }
