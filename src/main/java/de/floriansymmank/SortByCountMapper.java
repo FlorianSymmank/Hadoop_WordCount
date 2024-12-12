@@ -19,6 +19,7 @@ public class SortByCountMapper extends Mapper<Object, Text, CompositeKey, NullWr
             int count = Integer.parseInt(parts[1]);
             compositeKey = new CompositeKey(count, word);
             context.write(compositeKey, NullWritable.get());
+            context.getCounter("KeyCount", "TotalKeys").increment(1);
             return;
         }
 

@@ -1,6 +1,7 @@
 package de.floriansymmank;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
@@ -12,7 +13,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class WordCountDriver {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, IllegalArgumentException, InterruptedException {
 
         if (args.length != 4) {
             System.err.println("Usage: WordCounter <lang> <input path> <output path> <stopwords path>");
@@ -60,15 +61,17 @@ public class WordCountDriver {
 
         long startTime = System.currentTimeMillis();
         try {
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
-        } catch (InterruptedException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
+            boolean success = job.waitForCompletion(true);
+            if (!success) {
+                System.err.println("Job failed!");
+                System.exit(-1);
+            }
             long endTime = System.currentTimeMillis();
             long elapsedTime = endTime - startTime;
+
             long totalWords = job.getCounters().findCounter("WordCount", "TotalWords").getValue();
             double wordsPerMinute = (totalWords / (elapsedTime / 60000.0));
-            
+
             Path path = new Path(inputPath);
             FileStatus fileStatus = fs.getFileStatus(path);
 
@@ -81,7 +84,13 @@ public class WordCountDriver {
             System.err.println("Language: " + lang);
             System.out.println("Total Words: " + totalWords);
             System.out.println("Elapsed Time (ms): " + elapsedTime);
-            System.out.println("Words per Minute: " + wordsPerMinute);
+
+            DecimalFormat df = new DecimalFormat("#");
+            System.out.println("Words per Minute: " + df.format(wordsPerMinute));
+            System.exit(0);
+        } catch (InterruptedException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.exit(1);
         }
     }
 }
