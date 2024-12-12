@@ -11,7 +11,7 @@ dirs = [d for d in os.listdir('.') if os.path.isdir(
 # Combine all files in each subdirectory until the result file is 1 GB
 for idx, d in enumerate(tqdm(dirs, desc="Processing directories", position=0)):
     # Exclude the output file
-    files = [f for f in os.listdir(d) if f != f"{d}.txt"]
+    files = [f for f in os.listdir(d) if not f.startswith(d)]
     path = os.path.join(d, f"{d}.txt")
     total_size = 0
 
