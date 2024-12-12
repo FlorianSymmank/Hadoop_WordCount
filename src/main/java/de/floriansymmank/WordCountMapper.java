@@ -50,6 +50,7 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
             if (stopwords.contains(word))
                 continue;
             context.write(new Text(word), new IntWritable(1));
+            context.getCounter("WordCount", "TotalWords").increment(1);
         }
     }
 

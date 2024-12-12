@@ -5,22 +5,29 @@ import java.io.IOException;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Counter;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class WordCountMapperTest {
 
     private de.floriansymmank.WordCountMapper bookMapper;
     private Mapper<Object, Text, Text, IntWritable>.Context context;
+    private Counter counter;
 
     @Before
     public void setUp() {
         bookMapper = new WordCountMapper();
         bookMapper.stopwords = new java.util.HashSet<String>();
         context = mock(Mapper.Context.class);
+        counter = mock(Counter.class);
+        when(context.getCounter(anyString(), anyString())).thenReturn(counter);
     }
 
     @Test
@@ -43,6 +50,8 @@ public class WordCountMapperTest {
         verify(context).write(new Text("und"), new IntWritable(1));
         verify(context).write(new Text("webseite"), new IntWritable(1));
         verify(context).write(new Text("www"), new IntWritable(1));
+
+        verify(counter, times(17)).increment(1);
     }
 
     @Test
@@ -67,5 +76,7 @@ public class WordCountMapperTest {
         verify(context, times(2)).write(new Text("com"), new IntWritable(1));
         verify(context).write(new Text("webseite"), new IntWritable(1));
         verify(context).write(new Text("www"), new IntWritable(1));
+
+        verify(counter, times(14)).increment(1);
     }
 }
