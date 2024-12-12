@@ -3,6 +3,7 @@ package de.floriansymmank;
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Job;
@@ -22,7 +23,7 @@ public class WordCountDriver {
         String inputPath = args[1];
         String outputPath = args[2];
         String stopWordsPath = args[3];
-        
+
         Configuration conf = new Configuration();
         conf.set("lang", lang);
         conf.set("stopWordsPath", stopWordsPath);
@@ -38,7 +39,7 @@ public class WordCountDriver {
 
         // Configure input
         job.setInputFormatClass(org.apache.hadoop.mapreduce.lib.input.TextInputFormat.class);
-        FileInputFormat.addInputPath(job, new org.apache.hadoop.fs.Path(inputPath));
+        FileInputFormat.addInputPath(job, new Path(inputPath));
 
         // Configure output
         FileSystem fs = FileSystem.get(conf);
@@ -57,10 +58,30 @@ public class WordCountDriver {
         // Add the JSON stopwords file to the distributed cache
         job.addCacheFile(new Path(stopWordsPath).toUri());
 
+        long startTime = System.currentTimeMillis();
         try {
             System.exit(job.waitForCompletion(true) ? 0 : 1);
         } catch (InterruptedException | ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            long endTime = System.currentTimeMillis();
+            long elapsedTime = endTime - startTime;
+            long totalWords = job.getCounters().findCounter("WordCount", "TotalWords").getValue();
+            double wordsPerMinute = (totalWords / (elapsedTime / 60000.0));
+            
+            Path path = new Path(inputPath);
+            FileStatus fileStatus = fs.getFileStatus(path);
+
+            long inputFileSize = fileStatus.getLen();
+            String inputFileName = fileStatus.getPath().getName();
+
+            System.out.println("Stats:");
+            System.out.println("Input File: " + inputFileName);
+            System.out.println("Input File Size (bytes): " + inputFileSize);
+            System.err.println("Language: " + lang);
+            System.out.println("Total Words: " + totalWords);
+            System.out.println("Elapsed Time (ms): " + elapsedTime);
+            System.out.println("Words per Minute: " + wordsPerMinute);
         }
     }
 }
