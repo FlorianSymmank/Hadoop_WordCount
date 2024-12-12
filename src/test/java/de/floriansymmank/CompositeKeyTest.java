@@ -50,20 +50,20 @@ public class CompositeKeyTest {
 
     @Test
     public void testCompareTo() {
-        CompositeKey key1 = new CompositeKey(10, "apple");
-        CompositeKey key2 = new CompositeKey(10, "banana");
+        CompositeKey key1 = new CompositeKey(10, "banana");
+        CompositeKey key2 = new CompositeKey(10, "apple");
         CompositeKey key3 = new CompositeKey(5, "apple");
 
-        // Comparing different words with the same count
-        assertEquals(1, key1.compareTo(key2)); // "apple" > "banana"
-        assertEquals(-1, key2.compareTo(key1)); // "banana" < "apple"
+        // Comparing different words with the same count, ascending order
+        assertEquals(1, key1.compareTo(key2)); // "banana" > "apple"
+        assertEquals(-1, key2.compareTo(key1)); // "apple" < "banana"
 
-        // Comparing different counts
+        // Comparing different counts, descending order
         assertEquals(-1, key1.compareTo(key3)); // 10 > 5
         assertEquals(1, key3.compareTo(key1)); // 5 < 10
 
-        // Comparing equal keys
-        assertEquals(0, key1.compareTo(new CompositeKey(10, "apple"))); // same count and word
+        // Comparing equal keys, should return 0
+        assertEquals(0, key1.compareTo(new CompositeKey(10, "banana"))); // same count and word
     }
 
     @Test
