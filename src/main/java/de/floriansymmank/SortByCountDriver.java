@@ -43,6 +43,11 @@ public class SortByCountDriver {
 
         FileSystem fs = FileSystem.get(conf);
 
+        Path outPath = new Path(args[1]);
+        if (fs.exists(outPath)) {
+            fs.delete(outPath, true);
+        }
+
         // Wait for completion
         boolean success = job.waitForCompletion(true);
 
@@ -63,7 +68,11 @@ public class SortByCountDriver {
         long inputFileSize = fileStatus.getLen();
         String inputFileName = fileStatus.getPath().getName();
 
+        
+        String outputFileName = fs.getFileStatus(outPath).getPath().getName();
+
         System.out.println("Stats:");
+        System.out.println("Output File: " + outputFileName);
         System.out.println("Input File: " + inputFileName);
         System.out.println("Input File Size (bytes): " + inputFileSize);
         System.out.println("Total Keys: " + totalKeys);
