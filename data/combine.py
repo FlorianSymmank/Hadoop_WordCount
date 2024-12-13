@@ -31,3 +31,14 @@ for idx, d in enumerate(tqdm(dirs, desc="Processing directories", position=0)):
                 else:
                     continue
                 break
+
+# for each subdirectory, combine all files into one
+for d in dirs:
+    files = [f for f in os.listdir(d) if not f.startswith(d)]
+    path = os.path.join(d, f"{d}_all.txt")
+    with open(path, 'w', encoding="UTF-8") as outfile:
+        for fname in files:
+            with open(os.path.join(d, fname), encoding="UTF-8") as infile:
+                content = infile.read()
+                outfile.write(content)
+                outfile.write("\n")
