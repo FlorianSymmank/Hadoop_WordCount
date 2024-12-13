@@ -58,9 +58,8 @@ bin/hdfs dfs -rm -r /output/*
 
 # bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/<lang>_wordcount/part-r-00000 /output/<lang>_sorted # second job: sort by count
 
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver en /data/en/en_10.txt /output/en_10_wordcount /data/stopwords.json
-
-bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/en_10_wordcount/part-r-00000 /output/de_100_sorted 
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_all.txt /output/de_all_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_all_wordcount/part-r-00000 /output/de_all_sorted
 
 # Check the output
 bin/hdfs dfs -cat /output/de_wordcount/*
@@ -85,3 +84,58 @@ cd /usr/local/hadoop-2.8.1 # hadoop home
 
 # Run Local
 `java -cp hadoop_wordcount-1.0-SNAPSHOT.jar de.floriansymmank.WordCountDriver <> <> <>`
+
+``` bash	
+export HADOOP_HOME=/usr/local/hadoop-2.8.1
+```
+
+To Stop Hadoop Services:
+``` bash
+$HADOOP_HOME/sbin/stop-dfs.sh   # Stops HDFS
+$HADOOP_HOME/sbin/stop-yarn.sh  # Stops YARN
+``` 
+To Start Hadoop Services:
+``` bash
+$HADOOP_HOME/sbin/start-dfs.sh  # Starts HDFS
+$HADOOP_HOME/sbin/start-yarn.sh  # Starts YARN
+``` 
+Notes
+- Make sure to run these commands as the user who installed and configured Hadoop.
+- You can also check the status of the services using:
+``` bash
+ps -ef | grep hadoop | grep -P  'namenode|datanode|tasktracker|jobtracker'
+$HADOOP_HOME/bin/hdfs dfsadmin -report
+```
+- After restarting, your configuration changes should take effect.
+
+``` bash
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_1GB.txt /output/de_1GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_1GB_wordcount/part-r-00000 /output/de_1GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_2GB.txt /output/de_2GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_2GB_wordcount/part-r-00000 /output/de_2GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_3GB.txt /output/de_3GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_3GB_wordcount/part-r-00000 /output/de_3GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_4GB.txt /output/de_4GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_4GB_wordcount/part-r-00000 /output/de_4GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_5GB.txt /output/de_5GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_5GB_wordcount/part-r-00000 /output/de_5GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_6GB.txt /output/de_6GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_6GB_wordcount/part-r-00000 /output/de_6GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_7GB.txt /output/de_7GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_7GB_wordcount/part-r-00000 /output/de_7GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_8GB.txt /output/de_8GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_8GB_wordcount/part-r-00000 /output/de_8GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_9GB.txt /output/de_9GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_9GB_wordcount/part-r-00000 /output/de_9GB_sorted
+
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.WordCountDriver de /data/de/de_10GB.txt /output/de_10GB_wordcount /data/stopwords.json
+bin/hadoop jar fs/hadoop_wordcount.jar de.floriansymmank.SortByCountDriver /output/de_10GB_wordcount/part-r-00000 /output/de_10GB_sorted
+```
