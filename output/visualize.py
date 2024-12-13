@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from wordcloud import WordCloud
 import json
-
+import math
 
 def plot_top_10():
     dirs = [d for d in os.listdir('.') if os.path.isdir(
@@ -20,6 +20,33 @@ def plot_top_10():
             plt.tight_layout()
             plt.savefig(f'{subdir}/sorted_top10.png')
             plt.close()
+
+def plot_top_10_in_one():
+    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" not in d]
+    num_dirs = len(dirs)
+    
+    cols = 3
+    rows = math.ceil(num_dirs / cols)  # Calculate the number of rows needed
+    
+    fig, axs = plt.subplots(rows, cols, figsize=(15, 5 * rows))  # Create subplots
+    axs = axs.flatten()  # Flatten the 2D array of axes for easy indexing
+    
+    for i, subdir in enumerate(dirs):
+        with open(f'{subdir}/part-r-00000', 'r', encoding="UTF-8") as f:
+            lines = f.readlines()[:10]
+            y = [int(line.strip().split('\t')[0]) for line in lines]
+            x = [line.strip().split('\t')[1] for line in lines]
+            axs[i].bar(x, y)
+            axs[i].set_title(subdir)
+            axs[i].tick_params(axis='x', rotation=45)
+    
+    # Hide any empty subplots
+    for j in range(i + 1, rows * cols):
+        axs[j].axis('off')
+    
+    plt.tight_layout()
+    plt.savefig('all_sorted_top10.png')  # Save the combined figure
+    plt.close()
 
 
 def plot_zipf():
@@ -115,63 +142,146 @@ def plot_cdf():
         plt.close()
 
 
-def calculate_correlation(json_data, key1, key2):
-    values1 = np.array([int(value[key1]) for value in json_data.values()])
-    values2 = np.array([int(value[key2]) for value in json_data.values()])
+def plot_total_words_w_and_wo_stopwords():
+    with open('res_count.json', 'r') as file:
+        data = json.load(file)
 
-    correlation_coefficient = np.corrcoef(values1, values2)[0, 1]
-    return correlation_coefficient
+    # Prepare data for plotting
+    languages = ['de', 'en', 'es', 'fr', 'it', 'nl', 'ru', 'uk']
+    total_words_with_stopwords = []
+    total_words_without_stopwords = []
+
+    for lang in languages:
+        total_words_with_stopwords.append(int(data.get(f"{lang}_all", {}).get('total_words', 0)))
+        total_words_without_stopwords.append(int(data.get(f"{lang}_all_without_stopwords", {}).get('total_words', 0)))
+
+    # Define bar positions
+    x = range(len(languages))
+    width = 0.4  # Width of the bars
+
+    # Side by side bar chart
+    plt.bar([i - width/2 for i in x], total_words_without_stopwords, width=width, label='Without Stopwords', color='lightblue')
+    plt.bar([i + width/2 for i in x], total_words_with_stopwords, width=width, label='With Stopwords', color='blue')
+
+    # Calculate and annotate ratios
+    for i in x:
+        if total_words_without_stopwords[i] > 0:  # Avoid division by zero
+            ratio = total_words_with_stopwords[i] / total_words_without_stopwords[i]
+            plt.text(i, max(total_words_without_stopwords[i], total_words_with_stopwords[i]) + 10000, 
+                     f'{ratio:.2f}', ha='center', va='bottom')  # Adjusted position for the ratio
+
+    plt.xticks(x, languages)
+    plt.ylabel('Total Words')
+    plt.title('Total Words with and without Stopwords by Language')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'tw_w_wo_stopwords.png')
+    plt.close()
 
 
-def plot_meta(file_path, title, key_x: tuple[str, str], key_y: tuple[str, str]):
-    with open(file_path, 'r') as file:
-        json_data = json.load(file)
+def plot_total_words_by_elapsed_time():
+    with open('res_count.json', 'r') as file:
+        data = json.load(file)
 
-    x_values = [int(value[key_x[0]]) 
-               for value in json_data.values()]
-    y_values = [int(value[key_y[0]])
-                   for value in json_data.values()]
+    # Prepare data for plotting
+    languages = []
+    total_words = []
+    elapsed_time = []
 
-    correlation_coefficient = calculate_correlation(
-        json_data, key_x[0], key_y[0])
+    for key, value in data.items():
+        languages.append(key)
+        total_words.append(int(value['total_words']))
+        elapsed_time.append(int(value['elapsed_time']))
 
-    # Plotting
-    plt.figure(figsize=(10, 5))
-    plt.plot(x_values, y_values, 'o')
+    # Create a scatter plot for total words vs. elapsed time
+    plt.figure(figsize=(10, 6))
+    plt.scatter(elapsed_time, total_words, color='blue', label='Data Points')
 
-    # coefficients = np.polyfit(keyx_values, keyy_values, 1)
-    # polynomial = np.poly1d(coefficients)
-    # trendline = polynomial(np.array(keyy_values))
-    # plt.plot(keyy_values, trendline, color='red', label='Trendline')
+    # Fit a quadratic polynomial to the data
+    coefficients = np.polyfit(elapsed_time, total_words, 2)
+    polynomial = np.poly1d(coefficients)
 
-    plt.title(f'{key_x[1]} by {key_y[1]} ({title})')
-    # plt.suptitle(f"The correlation coefficient is {
-    #              correlation_coefficient}", fontsize=10)
-    plt.xlabel(key_x[1])
-    plt.ylabel(key_y[1])
+    # Create a range of x values for plotting the trendline
+    x_values = np.linspace(min(elapsed_time), max(elapsed_time), 100)
+    y_values = polynomial(x_values)
 
+    # Plot the trendline
+    plt.plot(x_values, y_values, color='red', label='Quadratic Trendline')
+
+    # Annotate each point with the language key
+    for i, lang in enumerate(languages):
+        plt.annotate(lang, (elapsed_time[i], total_words[i]), textcoords="offset points", xytext=(0,5), ha='center')
+
+    plt.xlabel('Elapsed Time (ms)')
+    plt.ylabel('Total Words')
+    plt.title('Total Words by Elapsed Time with Quadratic Trendline')
     plt.grid()
-    # plt.legend()
-    plt.show()
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'tw_by_elapsed_time.png')
+    plt.close()
 
-print("Visualizing the output")
+def plot_total_keys_by_elapsed_time():
+    with open('res_sort.json', 'r') as file:
+        data = json.load(file)
 
-print("Top 10 words")
-plot_top_10()
+    # Prepare data for plotting
+    languages = []
+    total_words = []
+    elapsed_time = []
 
-print("Zipf plot")
-plot_zipf()
+    for key, value in data.items():
+        languages.append(key)
+        total_words.append(int(value['total_keys']))
+        elapsed_time.append(int(value['elapsed_time']))
 
-print("Word Cloud")
-create_wordcloud()
+    # Create a scatter plot for total keys vs. elapsed time
+    plt.figure(figsize=(10, 6))
+    plt.scatter(elapsed_time, total_words, color='blue', label='Data Points')
 
-print("Frequency Histogram")
-plot_frequency_histogram()
+    # Fit a quadratic polynomial to the data
+    coefficients = np.polyfit(elapsed_time, total_words, 2)
+    polynomial = np.poly1d(coefficients)
 
-print("CDF")
-plot_cdf()
+    # Create a range of x values for plotting the trendline
+    x_values = np.linspace(min(elapsed_time), max(elapsed_time), 100)
+    y_values = polynomial(x_values)
 
-print("Res files")
-plot_meta('res_count.json', "Count", ("elapsed_time",
-          "elapsed_time"), ("words_per_minute", "words_per_minute"))
+    # Plot the trendline
+    plt.plot(x_values, y_values, color='red', label='Quadratic Trendline')
 
+    # Annotate each point with the language key
+    for i, lang in enumerate(languages):
+        plt.annotate(lang, (elapsed_time[i], total_words[i]), textcoords="offset points", xytext=(0,5), ha='center')
+
+    plt.xlabel('Elapsed Time (ms)')
+    plt.ylabel('Total Keys')
+    plt.title('Total Keys by Elapsed Time with Quadratic Trendline')
+    plt.grid()
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'tk_by_elapsed_time.png')
+    plt.close()
+
+# print("Visualizing the output")
+
+# print("Top 10 words")
+# plot_top_10()
+plot_top_10_in_one()
+
+# print("Zipf plot")
+# plot_zipf()
+
+# print("Word Cloud")
+# create_wordcloud()
+
+# print("Frequency Histogram")
+# plot_frequency_histogram()
+
+# print("CDF")
+# plot_cdf()
+
+# print("Total Words with and without Stopwords by Language")
+# plot_total_words_w_and_wo_stopwords()
+# plot_total_words_by_elapsed_time()
+# plot_total_keys_by_elapsed_time()
