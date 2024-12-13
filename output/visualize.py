@@ -22,7 +22,7 @@ def plot_top_10():
             plt.close()
 
 def plot_top_10_in_one():
-    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" not in d]
+    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" in d]
     num_dirs = len(dirs)
     
     cols = 3
@@ -45,7 +45,7 @@ def plot_top_10_in_one():
         axs[j].axis('off')
     
     plt.tight_layout()
-    plt.savefig('all_sorted_top10.png')  # Save the combined figure
+    plt.savefig('all_sorted_xx_top10.png')  # Save the combined figure
     plt.close()
 
 
@@ -115,6 +115,31 @@ def plot_frequency_histogram():
         plt.savefig(f'{subdir}/frequency_histogram.png')
         plt.close()
 
+def plot_frequency_histogram_in_one():
+    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" in d]
+    
+    num_plots = len(dirs)
+    cols = 3
+    rows = (num_plots + cols - 1) // cols  # Calculate number of rows needed
+
+    plt.figure(figsize=(15, 5 * rows))  # Adjust figure size based on number of rows
+
+    for i, subdir in enumerate(dirs):
+        counts = []
+        with open(f'{subdir}/part-r-00000', 'r', encoding="UTF-8") as f:
+            for line in f:
+                count, word = line.strip().split('\t')
+                counts.append(int(count))
+
+        plt.subplot(rows, cols, i + 1)  # Create a subplot in the grid
+        plt.hist(counts, bins=100, log=True)
+        plt.title(f'Word Frequency Histogram for {subdir}')
+        plt.xlabel('Frequency of the word')
+        plt.ylabel('Number of words')
+
+    plt.tight_layout()
+    plt.savefig('combined_frequency_histograms_xx.png')  # Save all plots in one image
+    plt.close()
 
 def plot_cdf():
     dirs = [d for d in os.listdir('.') if os.path.isdir(
@@ -267,7 +292,7 @@ def plot_total_keys_by_elapsed_time():
 
 # print("Top 10 words")
 # plot_top_10()
-plot_top_10_in_one()
+# plot_top_10_in_one()
 
 # print("Zipf plot")
 # plot_zipf()
@@ -277,6 +302,7 @@ plot_top_10_in_one()
 
 # print("Frequency Histogram")
 # plot_frequency_histogram()
+plot_frequency_histogram_in_one()
 
 # print("CDF")
 # plot_cdf()
