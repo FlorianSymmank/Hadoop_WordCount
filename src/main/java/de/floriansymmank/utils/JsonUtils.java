@@ -2,9 +2,11 @@ package de.floriansymmank.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,8 +57,8 @@ public class JsonUtils {
      * @return JSONObject representing the JSON data.
      * @throws IOException If an I/O error occurs.
      */
-    static JSONObject loadJsonFromFile(String fileName) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+    public static JSONObject loadJsonFromFile(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
         StringBuilder jsonContent = new StringBuilder();
         String line;
 
@@ -70,9 +72,10 @@ public class JsonUtils {
 
         return new JSONObject(jsonContent.toString());
     }
+
     /**
      * Converts a JSONObject to a Map<String, List<String>>.
-     * 
+     *
      * @param jsonObject The JSONObject to convert.
      * @return Map<String, List<String>> representing the JSON data.
      */

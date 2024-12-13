@@ -54,6 +54,13 @@ public class JsonUtilsTest {
     }
 
     @Test
+    public void testLoadJsonFromFileUtf8() throws IOException {
+        JSONObject jsonObject = JsonUtils.loadJsonFromFile("src/test/resources/test-utf8.json");
+
+        assertEquals("äöü", jsonObject.getString("key"));
+    }
+
+    @Test
     public void testConvertJsonToMap_NormalCase() throws IOException {
         // JSON-Inhalt: {"key1": ["value1", "value2"], "key2": ["value3", "value4"]}
         String jsonString = "{"

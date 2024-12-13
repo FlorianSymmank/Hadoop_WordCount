@@ -2,6 +2,7 @@ package de.floriansymmank;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -29,13 +30,16 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
 
         String stopWordsPath = context.getConfiguration().get("stopWordsPath");
         String stopWordsFileName = new File(stopWordsPath).getName();
-        
+
         // Load the stopwords from the distributed cache
         JSONObject stopwords_json = JsonUtils.loadJsonFile(context, stopWordsFileName);
 
         Map<String, List<String>> all_stopwords = JsonUtils.convertJsonToMap(stopwords_json);
-        List<String> stopWordsList = all_stopwords.get(context.getConfiguration().get("lang"));
+        List<String> stopWordsList = all_stopwords.getOrDefault(context.getConfiguration().get("lang"), new ArrayList<String>());
         stopwords = new HashSet<String>(stopWordsList);
+
+        if(stopwords.isEmpty())
+            System.out.println("No stopwords found for " + context.getConfiguration().get("lang") +" language.");
     }
 
     // Runs once for each key-value pair in the input split
@@ -47,8 +51,9 @@ public class WordCountMapper extends Mapper<Object, Text, Text, IntWritable> {
 
         while (matcher.find()) {
             String word = matcher.group().toLowerCase(Locale.ROOT);
-            if (stopwords.contains(word))
+            if (stopwords.contains(word)) {
                 continue;
+            }
             context.write(new Text(word), new IntWritable(1));
             context.getCounter("WordCount", "TotalWords").increment(1);
         }
