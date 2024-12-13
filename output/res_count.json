@@ -1,194 +1,130 @@
 {
-    "de": {
-        "input_file": "de.txt",
-        "input_file_size": "1081019587",
+    "de_all_without_stopwords": {
+        "input_file": "de_all.txt",
+        "input_file_size": "34102705",
         "language": "de",
-        "total_words": "72169021",
-        "elapsed_time": "41814",
-        "words_per_minute": "103557212"
+        "total_words": "5200113",
+        "elapsed_time": "17194",
+        "words_per_minute": "18146259"
     },
-    "de_10": {
-        "input_file": "de_10.txt",
-        "input_file_size": "13763100",
+    "de_all": {
+        "input_file": "de_all.txt",
+        "input_file_size": "34102705",
         "language": "de",
-        "total_words": "928198",
-        "elapsed_time": "12704",
-        "words_per_minute": "4383807"
+        "total_words": "2164266",
+        "elapsed_time": "17545",
+        "words_per_minute": "7401309"
     },
-    "de_100": {
-        "input_file": "de_100.txt",
-        "input_file_size": "105657741",
-        "language": "de",
-        "total_words": "7061391",
-        "elapsed_time": "19784",
-        "words_per_minute": "21415460"
-    },
-    "en": {
-        "input_file": "en.txt",
-        "input_file_size": "1083601278",
+    "en_all_without_stopwords": {
+        "input_file": "en_all.txt",
+        "input_file_size": "29517251",
         "language": "en",
-        "total_words": "61212427",
-        "elapsed_time": "37805",
-        "words_per_minute": "97149732"
+        "total_words": "5340103",
+        "elapsed_time": "17766",
+        "words_per_minute": "18034796"
     },
-    "en_10": {
-        "input_file": "en_10.txt",
-        "input_file_size": "10604017",
+    "en_all": {
+        "input_file": "en_all.txt",
+        "input_file_size": "29517251",
         "language": "en",
-        "total_words": "591675",
-        "elapsed_time": "12710",
-        "words_per_minute": "2793116"
+        "total_words": "1667067",
+        "elapsed_time": "15166",
+        "words_per_minute": "6595280"
     },
-    "en_100": {
-        "input_file": "en_100.txt",
-        "input_file_size": "106492020",
-        "language": "en",
-        "total_words": "6017651",
-        "elapsed_time": "19708",
-        "words_per_minute": "18320431"
-    },
-    "es": {
-        "input_file": "es.txt",
-        "input_file_size": "1083583824",
+    "es_all_without_stopwords": {
+        "input_file": "es_all.txt",
+        "input_file_size": "9002698",
         "language": "es",
-        "total_words": "81606081",
-        "elapsed_time": "41812",
-        "words_per_minute": "117104297"
+        "total_words": "1503529",
+        "elapsed_time": "13628",
+        "words_per_minute": "6619588"
     },
-    "es_10": {
-        "input_file": "es_10.txt",
-        "input_file_size": "11050582",
+    "es_all": {
+        "input_file": "es_all.txt",
+        "input_file_size": "9002698",
         "language": "es",
-        "total_words": "832077",
-        "elapsed_time": "12711",
-        "words_per_minute": "3927671"
+        "total_words": "621327",
+        "elapsed_time": "12736",
+        "words_per_minute": "2927106"
     },
-    "es_100": {
-        "input_file": "es_100.txt",
-        "input_file_size": "106329107",
-        "language": "es",
-        "total_words": "8013532",
-        "elapsed_time": "20716",
-        "words_per_minute": "23209689"
-    },
-    "fr": {
-        "input_file": "fr.txt",
-        "input_file_size": "1085744588",
+    "fr_all_without_stopwords": {
+        "input_file": "fr_all.txt",
+        "input_file_size": "34205127",
         "language": "fr",
-        "total_words": "78938972",
-        "elapsed_time": "40832",
-        "words_per_minute": "115995746"
+        "total_words": "5763233",
+        "elapsed_time": "18101",
+        "words_per_minute": "19103584"
     },
-    "fr_10": {
-        "input_file": "fr_10.txt",
-        "input_file_size": "10582428",
+    "fr_all": {
+        "input_file": "fr_all.txt",
+        "input_file_size": "34205127",
         "language": "fr",
-        "total_words": "775296",
-        "elapsed_time": "12694",
-        "words_per_minute": "3664547"
+        "total_words": "2228187",
+        "elapsed_time": "16145",
+        "words_per_minute": "8280658"
     },
-    "fr_100": {
-        "input_file": "fr_100.txt",
-        "input_file_size": "106318810",
-        "language": "fr",
-        "total_words": "7727307",
-        "elapsed_time": "21731",
-        "words_per_minute": "21335347"
-    },
-    "it": {
-        "input_file": "it.txt",
-        "input_file_size": "1084724167",
+    "it_all_without_stopwords": {
+        "input_file": "it_all.txt",
+        "input_file_size": "20429203",
         "language": "it",
-        "total_words": "80712475",
-        "elapsed_time": "41834",
-        "words_per_minute": "115761068"
+        "total_words": "3272705",
+        "elapsed_time": "17126",
+        "words_per_minute": "11465742"
     },
-    "it_10": {
-        "input_file": "it_10.txt",
-        "input_file_size": "10820385",
+    "it_all": {
+        "input_file": "it_all.txt",
+        "input_file_size": "20429203",
         "language": "it",
-        "total_words": "802096",
-        "elapsed_time": "12676",
-        "words_per_minute": "3796605"
+        "total_words": "1454599",
+        "elapsed_time": "14755",
+        "words_per_minute": "5915008"
     },
-    "it_100": {
-        "input_file": "it_100.txt",
-        "input_file_size": "106539265",
-        "language": "it",
-        "total_words": "7928996",
-        "elapsed_time": "21707",
-        "words_per_minute": "21916421"
-    },
-    "nl": {
-        "input_file": "nl.txt",
-        "input_file_size": "1083343006",
+    "nl_all_without_stopwords": {
+        "input_file": "nl_all.txt",
+        "input_file_size": "701535",
         "language": "nl",
-        "total_words": "89688243",
-        "elapsed_time": "42791",
-        "words_per_minute": "125757626"
+        "total_words": "117624",
+        "elapsed_time": "12744",
+        "words_per_minute": "553785"
     },
-    "nl_10": {
-        "input_file": "nl_10.txt",
-        "input_file_size": "10711281",
+    "nl_all": {
+        "input_file": "nl_all.txt",
+        "input_file_size": "701535",
         "language": "nl",
-        "total_words": "886981",
-        "elapsed_time": "12701",
-        "words_per_minute": "4190131"
+        "total_words": "58078",
+        "elapsed_time": "11697",
+        "words_per_minute": "297912"
     },
-    "nl_100": {
-        "input_file": "nl_100.txt",
-        "input_file_size": "105930275",
-        "language": "nl",
-        "total_words": "8769778",
-        "elapsed_time": "20726",
-        "words_per_minute": "25387758"
-    },
-    "ru": {
-        "input_file": "ru.txt",
-        "input_file_size": "1097465984",
+    "ru_all_without_stopwords": {
+        "input_file": "ru_all.txt",
+        "input_file_size": "4265232",
         "language": "ru",
-        "total_words": "93740746",
-        "elapsed_time": "45834",
-        "words_per_minute": "12271337"
+        "total_words": "364318",
+        "elapsed_time": "12685",
+        "words_per_minute": "1723223"
     },
-    "ru_10": {
-        "input_file": "ru_10.txt",
-        "input_file_size": "10766097",
+    "ru_all": {
+        "input_file": "ru_all.txt",
+        "input_file_size": "4265232",
         "language": "ru",
-        "total_words": "919925",
-        "elapsed_time": "13667",
-        "words_per_minute": "4038597"
+        "total_words": "202636",
+        "elapsed_time": "11695",
+        "words_per_minute": "1039603"
     },
-    "ru_100": {
-        "input_file": "ru_100.txt",
-        "input_file_size": "107218567",
-        "language": "ru",
-        "total_words": "9158336",
-        "elapsed_time": "20754",
-        "words_per_minute": "26476831"
-    },
-    "uk": {
-        "input_file": "uk.txt",
-        "input_file_size": "1091503663",
+    "uk_all_without_stopwords": {
+        "input_file": "uk_all.txt",
+        "input_file_size": "8676136",
         "language": "uk",
-        "total_words": "101958754",
-        "elapsed_time": "46829",
-        "words_per_minute": "130635402"
+        "total_words": "810472",
+        "elapsed_time": "12745",
+        "words_per_minute": "3815482"
     },
-    "uk_10": {
-        "input_file": "uk_10.txt",
-        "input_file_size": "10696366",
+    "uk_all": {
+        "input_file": "uk_all.txt",
+        "input_file_size": "8676136",
         "language": "uk",
-        "total_words": "1001574",
-        "elapsed_time": "12697",
-        "words_per_minute": "4732964"
-    },
-    "uk_100": {
-        "input_file": "uk_100.txt",
-        "input_file_size": "106677391",
-        "language": "uk",
-        "total_words": "9965550",
-        "elapsed_time": "22688",
-        "words_per_minute": "26354593"
+        "total_words": "499359",
+        "elapsed_time": "13736",
+        "words_per_minute": "2181242"
     }
 }

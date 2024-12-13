@@ -33,6 +33,10 @@ for line in lines:
             curr["language"] = curr["output_file"].split("_")[0]
             result_sort[res_key] = curr
         else:
+            if curr["language"] == "xx":
+                curr["language"] = res_key.split("_")[0]
+                res_key += "_without_stopwords"
+
             result_count[res_key] = curr
 
         curr = {}
@@ -40,6 +44,19 @@ for line in lines:
         curr_key = translation[parts[0].strip()]
         value = parts[1].strip()
         curr[curr_key] = value
+
+## get the last one
+res_key = curr.get("output_file", curr["input_file"])
+res_key = res_key.replace(".txt", "")
+
+if "output_file" in curr:
+    curr["language"] = curr["output_file"].split("_")[0]
+    result_sort[res_key] = curr
+else:
+    if curr["language"] == "xx":
+        res_key += "_xx"
+
+    result_count[res_key] = curr
     
 with open("res_count.json", 'w', encoding='utf-8') as json_file:
     json.dump(result_count, json_file, ensure_ascii=False, indent=4)

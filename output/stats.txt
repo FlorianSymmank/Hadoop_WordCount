@@ -1,13 +1,223 @@
-Input File: de.txt
-Input File Size (bytes): 1081019587
-Language: de
-Total Words: 72169021
-Elapsed Time (ms): 39794
-Words per Minute: 108813923
+Input File: de_all.txt
+Input File Size (bytes): 34102705
+Language: xx
+Total Words: 5200113
+Elapsed Time (ms): 17194
+Words per Minute: 18146259
 
-Output File: de_sorted
+Output File: de_all_xx_sorted
 Input File: part-r-00000
-Input File Size (bytes): 2354375
-Total Keys: 157706
-Elapsed Time (ms): 11711
-Keys per Minute: 807989
+Input File Size (bytes): 2172900
+Total Keys: 158266
+Elapsed Time (ms): 14963
+Keys per Minute: 634629
+
+Input File: de_all.txt
+Input File Size (bytes): 34102705
+Language: de
+Total Words: 2164266
+Elapsed Time (ms): 17545
+Words per Minute: 7401309
+
+Output File: de_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 2166304
+Total Keys: 157655
+Elapsed Time (ms): 14750
+Keys per Minute: 641308
+
+Input File: en_all.txt
+Input File Size (bytes): 29517251
+Language: xx
+Total Words: 5340103
+Elapsed Time (ms): 17766
+Words per Minute: 18034796
+
+Output File: en_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 617041
+Total Keys: 56312
+Elapsed Time (ms): 12739
+Keys per Minute: 265226
+
+Input File: en_all.txt
+Input File Size (bytes): 29517251
+Language: en
+Total Words: 1667067
+Elapsed Time (ms): 15166
+Words per Minute: 6595280
+
+Output File: en_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 607313
+Total Keys: 55363
+Elapsed Time (ms): 13570
+Keys per Minute: 244789
+
+Input File: es_all.txt
+Input File Size (bytes): 9002698
+Language: xx
+Total Words: 1503529
+Elapsed Time (ms): 13628
+Words per Minute: 6619588
+
+Output File: es_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 798522
+Total Keys: 67482
+Elapsed Time (ms): 11797
+Keys per Minute: 343216
+
+Input File: es_all.txt
+Input File Size (bytes): 9002698
+Language: es
+Total Words: 621327
+Elapsed Time (ms): 12736
+Words per Minute: 2927106
+
+Output File: es_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 791680
+Total Keys: 66819
+Elapsed Time (ms): 13148
+Keys per Minute: 304924
+
+Input File: fr_all.txt
+Input File Size (bytes): 34205127
+Language: xx
+Total Words: 5763233
+Elapsed Time (ms): 18101
+Words per Minute: 19103584
+
+Output File: fr_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 947420
+Total Keys: 79217
+Elapsed Time (ms): 11927
+Keys per Minute: 398509
+
+Input File: fr_all.txt
+Input File Size (bytes): 34205127
+Language: fr
+Total Words: 2228187
+Elapsed Time (ms): 16145
+Words per Minute: 8280658
+
+Output File: fr_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 940918
+Total Keys: 78598
+Elapsed Time (ms): 12739
+Keys per Minute: 370192
+
+Input File: it_all.txt
+Input File Size (bytes): 20429203
+Language: xx
+Total Words: 3272705
+Elapsed Time (ms): 17126
+Words per Minute: 11465742
+
+Output File: it_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 1203502
+Total Keys: 99769
+Elapsed Time (ms): 13605
+Keys per Minute: 439996
+
+Input File: it_all.txt
+Input File Size (bytes): 20429203
+Language: it
+Total Words: 1454599
+Elapsed Time (ms): 14755
+Words per Minute: 5915008
+
+Output File: it_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 1196807
+Total Keys: 99139
+Elapsed Time (ms): 11792
+Keys per Minute: 504439
+
+Input File: nl_all.txt
+Input File Size (bytes): 701535
+Language: xx
+Total Words: 117624
+Elapsed Time (ms): 12744
+Words per Minute: 553785
+
+Output File: nl_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 137127
+Total Keys: 12505
+Elapsed Time (ms): 11757
+Keys per Minute: 63817
+
+Input File: nl_all.txt
+Input File Size (bytes): 701535
+Language: nl
+Total Words: 58078
+Elapsed Time (ms): 11697
+Words per Minute: 297912
+
+Output File: nl_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 134154
+Total Keys: 12180
+Elapsed Time (ms): 12776
+Keys per Minute: 57201
+
+Input File: ru_all.txt
+Input File Size (bytes): 4265232
+Language: xx
+Total Words: 364318
+Elapsed Time (ms): 12685
+Words per Minute: 1723223
+
+Output File: ru_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 1130372
+Total Keys: 60079
+Elapsed Time (ms): 12784
+Keys per Minute: 281973
+
+Input File: ru_all.txt
+Input File Size (bytes): 4265232
+Language: ru
+Total Words: 202636
+Elapsed Time (ms): 11695
+Words per Minute: 1039603
+
+Output File: ru_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 1122837
+Total Keys: 59550
+Elapsed Time (ms): 11811
+Keys per Minute: 302515
+
+Input File: uk_all.txt
+Input File Size (bytes): 8676136
+Language: xx
+Total Words: 810472
+Elapsed Time (ms): 12745
+Words per Minute: 3815482
+
+Output File: uk_all_xx_sorted
+Input File: part-r-00000
+Input File Size (bytes): 1743661
+Total Keys: 95342
+Elapsed Time (ms): 12820
+Keys per Minute: 446218
+
+Input File: uk_all.txt
+Input File Size (bytes): 8676136
+Language: uk
+Total Words: 499359
+Elapsed Time (ms): 13736
+Words per Minute: 2181242
+
+Output File: uk_all_sorted
+Input File: part-r-00000
+Input File Size (bytes): 1738730
+Total Keys: 94980
+Elapsed Time (ms): 12776
+Keys per Minute: 446055

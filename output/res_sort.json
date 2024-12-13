@@ -1,209 +1,146 @@
 {
-    "de_sorted": {
-        "output_file": "de_sorted",
+    "de_all_xx_sorted": {
+        "output_file": "de_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "2354375",
-        "total_keys": "157706",
-        "elapsed_time": "12709",
-        "keys_per_minute": "744540",
+        "input_file_size": "2172900",
+        "total_keys": "158266",
+        "elapsed_time": "14963",
+        "keys_per_minute": "634629",
         "language": "de"
     },
-    "de_10_sorted": {
-        "output_file": "de_10_sorted",
+    "de_all_sorted": {
+        "output_file": "de_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "1171997",
-        "total_keys": "87829",
-        "elapsed_time": "12755",
-        "keys_per_minute": "413151",
+        "input_file_size": "2166304",
+        "total_keys": "157655",
+        "elapsed_time": "14750",
+        "keys_per_minute": "641308",
         "language": "de"
     },
-    "de_100_sorted": {
-        "output_file": "de_100_sorted",
+    "en_all_xx_sorted": {
+        "output_file": "en_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "2199392",
-        "total_keys": "157706",
-        "elapsed_time": "12792",
-        "keys_per_minute": "739709",
-        "language": "de"
+        "input_file_size": "617041",
+        "total_keys": "56312",
+        "elapsed_time": "12739",
+        "keys_per_minute": "265226",
+        "language": "en"
     },
-    "en_sorted": {
-        "output_file": "en_sorted",
+    "en_all_sorted": {
+        "output_file": "en_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "683274",
+        "input_file_size": "607313",
         "total_keys": "55363",
-        "elapsed_time": "12733",
-        "keys_per_minute": "260880",
+        "elapsed_time": "13570",
+        "keys_per_minute": "244789",
         "language": "en"
     },
-    "en_10_sorted": {
-        "output_file": "en_10_sorted",
+    "es_all_xx_sorted": {
+        "output_file": "es_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "393943",
-        "total_keys": "36297",
-        "elapsed_time": "11726",
-        "keys_per_minute": "185726",
-        "language": "en"
-    },
-    "en_100_sorted": {
-        "output_file": "en_100_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "627360",
-        "total_keys": "55363",
-        "elapsed_time": "13363",
-        "keys_per_minute": "248580",
-        "language": "en"
-    },
-    "es_sorted": {
-        "output_file": "es_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "928624",
-        "total_keys": "66972",
-        "elapsed_time": "12742",
-        "keys_per_minute": "315360",
+        "input_file_size": "798522",
+        "total_keys": "67482",
+        "elapsed_time": "11797",
+        "keys_per_minute": "343216",
         "language": "es"
     },
-    "es_10_sorted": {
-        "output_file": "es_10_sorted",
+    "es_all_sorted": {
+        "output_file": "es_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "795720",
-        "total_keys": "66972",
-        "elapsed_time": "12754",
-        "keys_per_minute": "315064",
+        "input_file_size": "791680",
+        "total_keys": "66819",
+        "elapsed_time": "13148",
+        "keys_per_minute": "304924",
         "language": "es"
     },
-    "es_100_sorted": {
-        "output_file": "es_100_sorted",
+    "fr_all_xx_sorted": {
+        "output_file": "fr_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "861613",
-        "total_keys": "66972",
-        "elapsed_time": "12717",
-        "keys_per_minute": "315980",
-        "language": "es"
-    },
-    "fr_sorted": {
-        "output_file": "fr_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "1042169",
-        "total_keys": "78679",
-        "elapsed_time": "11759",
-        "keys_per_minute": "401458",
+        "input_file_size": "947420",
+        "total_keys": "79217",
+        "elapsed_time": "11927",
+        "keys_per_minute": "398509",
         "language": "fr"
     },
-    "fr_10_sorted": {
-        "output_file": "fr_10_sorted",
+    "fr_all_sorted": {
+        "output_file": "fr_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "588263",
-        "total_keys": "49709",
-        "elapsed_time": "12711",
-        "keys_per_minute": "234642",
+        "input_file_size": "940918",
+        "total_keys": "78598",
+        "elapsed_time": "12739",
+        "keys_per_minute": "370192",
         "language": "fr"
     },
-    "fr_100_sorted": {
-        "output_file": "fr_100_sorted",
+    "it_all_xx_sorted": {
+        "output_file": "it_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "964761",
-        "total_keys": "78679",
-        "elapsed_time": "11776",
-        "keys_per_minute": "400878",
-        "language": "fr"
-    },
-    "it_sorted": {
-        "output_file": "it_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "1345159",
-        "total_keys": "99164",
-        "elapsed_time": "11719",
-        "keys_per_minute": "507709",
+        "input_file_size": "1203502",
+        "total_keys": "99769",
+        "elapsed_time": "13605",
+        "keys_per_minute": "439996",
         "language": "it"
     },
-    "it_10_sorted": {
-        "output_file": "it_10_sorted",
+    "it_all_sorted": {
+        "output_file": "it_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "826620",
-        "total_keys": "69403",
-        "elapsed_time": "12712",
-        "keys_per_minute": "327579",
+        "input_file_size": "1196807",
+        "total_keys": "99139",
+        "elapsed_time": "11792",
+        "keys_per_minute": "504439",
         "language": "it"
     },
-    "it_100_sorted": {
-        "output_file": "it_100_sorted",
+    "nl_all_xx_sorted": {
+        "output_file": "nl_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "1245727",
-        "total_keys": "99164",
-        "elapsed_time": "12727",
-        "keys_per_minute": "467497",
-        "language": "it"
-    },
-    "nl_sorted": {
-        "output_file": "nl_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "171251",
-        "total_keys": "12180",
-        "elapsed_time": "12743",
-        "keys_per_minute": "57349",
+        "input_file_size": "137127",
+        "total_keys": "12505",
+        "elapsed_time": "11757",
+        "keys_per_minute": "63817",
         "language": "nl"
     },
-    "nl_10_sorted": {
-        "output_file": "nl_10_sorted",
+    "nl_all_sorted": {
+        "output_file": "nl_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "146888",
+        "input_file_size": "134154",
         "total_keys": "12180",
-        "elapsed_time": "11772",
-        "keys_per_minute": "62080",
+        "elapsed_time": "12776",
+        "keys_per_minute": "57201",
         "language": "nl"
     },
-    "nl_100_sorted": {
-        "output_file": "nl_100_sorted",
+    "ru_all_xx_sorted": {
+        "output_file": "ru_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "159066",
-        "total_keys": "12180",
-        "elapsed_time": "12847",
-        "keys_per_minute": "56885",
-        "language": "nl"
-    },
-    "ru_sorted": {
-        "output_file": "ru_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "1258574",
-        "total_keys": "60078",
-        "elapsed_time": "12702",
-        "keys_per_minute": "283788",
+        "input_file_size": "1130372",
+        "total_keys": "60079",
+        "elapsed_time": "12784",
+        "keys_per_minute": "281973",
         "language": "ru"
     },
-    "ru_10_sorted": {
-        "output_file": "ru_10_sorted",
+    "ru_all_sorted": {
+        "output_file": "ru_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "1137569",
-        "total_keys": "60078",
-        "elapsed_time": "11732",
-        "keys_per_minute": "307252",
+        "input_file_size": "1122837",
+        "total_keys": "59550",
+        "elapsed_time": "11811",
+        "keys_per_minute": "302515",
         "language": "ru"
     },
-    "ru_100_sorted": {
-        "output_file": "ru_100_sorted",
+    "uk_all_xx_sorted": {
+        "output_file": "uk_all_xx_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "1198471",
-        "total_keys": "60078",
-        "elapsed_time": "12707",
-        "keys_per_minute": "283677",
-        "language": "ru"
-    },
-    "uk_sorted": {
-        "output_file": "uk_sorted",
-        "input_file": "part-r-00000",
-        "input_file_size": "1936617",
-        "total_keys": "95341",
-        "elapsed_time": "12715",
-        "keys_per_minute": "449899",
+        "input_file_size": "1743661",
+        "total_keys": "95342",
+        "elapsed_time": "12820",
+        "keys_per_minute": "446218",
         "language": "uk"
     },
-    "uk_10_sorted": {
-        "output_file": "uk_10_sorted",
+    "uk_all_sorted": {
+        "output_file": "uk_all_sorted",
         "input_file": "part-r-00000",
-        "input_file_size": "1745593",
-        "total_keys": "95341",
-        "elapsed_time": "11744",
-        "keys_per_minute": "487096",
+        "input_file_size": "1738730",
+        "total_keys": "94980",
+        "elapsed_time": "12776",
+        "keys_per_minute": "446055",
         "language": "uk"
     }
 }
