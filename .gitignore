@@ -238,6 +238,7 @@ cython_debug/
 /data/ru/ru_100.txt
 /data/uk/uk_100.txt
 
+/data/de/de*GB.txt
 
 examples/*
 output/*/*
