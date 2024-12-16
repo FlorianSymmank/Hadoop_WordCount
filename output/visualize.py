@@ -22,10 +22,10 @@ def plot_top_10():
             plt.close()
 
 def plot_top_10_in_one():
-    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" in d]
+    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" not in d]
     num_dirs = len(dirs)
     
-    cols = 3
+    cols = 4
     rows = math.ceil(num_dirs / cols)  # Calculate the number of rows needed
     
     fig, axs = plt.subplots(rows, cols, figsize=(15, 5 * rows))  # Create subplots
@@ -45,7 +45,7 @@ def plot_top_10_in_one():
         axs[j].axis('off')
     
     plt.tight_layout()
-    plt.savefig('all_sorted_xx_top10.png')  # Save the combined figure
+    plt.savefig('all_sorted_top10.png')  # Save the combined figure
     plt.close()
 
 
@@ -119,7 +119,7 @@ def plot_frequency_histogram_in_one():
     dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.endswith('_sorted') and "xx" in d]
     
     num_plots = len(dirs)
-    cols = 3
+    cols = 4
     rows = (num_plots + cols - 1) // cols  # Calculate number of rows needed
 
     plt.figure(figsize=(15, 5 * rows))  # Adjust figure size based on number of rows
@@ -133,7 +133,7 @@ def plot_frequency_histogram_in_one():
 
         plt.subplot(rows, cols, i + 1)  # Create a subplot in the grid
         plt.hist(counts, bins=100, log=True)
-        plt.title(f'Word Frequency Histogram for {subdir}')
+        plt.title(subdir)
         plt.xlabel('Frequency of the word')
         plt.ylabel('Number of words')
 
@@ -185,8 +185,8 @@ def plot_total_words_w_and_wo_stopwords():
     width = 0.4  # Width of the bars
 
     # Side by side bar chart
-    plt.bar([i - width/2 for i in x], total_words_without_stopwords, width=width, label='Without Stopwords', color='lightblue')
-    plt.bar([i + width/2 for i in x], total_words_with_stopwords, width=width, label='With Stopwords', color='blue')
+    plt.bar([i - width/2 for i in x], total_words_without_stopwords, width=width, label='With Stopwords', color='lightblue')
+    plt.bar([i + width/2 for i in x], total_words_with_stopwords, width=width, label='Without Stopwords', color='blue')
 
     # Calculate and annotate ratios
     for i in x:
@@ -223,7 +223,7 @@ def plot_total_words_by_elapsed_time():
     plt.scatter(elapsed_time, total_words, color='blue', label='Data Points')
 
     # Fit a quadratic polynomial to the data
-    coefficients = np.polyfit(elapsed_time, total_words, 2)
+    coefficients = np.polyfit(elapsed_time, total_words, 1)
     polynomial = np.poly1d(coefficients)
 
     # Create a range of x values for plotting the trendline
@@ -231,7 +231,7 @@ def plot_total_words_by_elapsed_time():
     y_values = polynomial(x_values)
 
     # Plot the trendline
-    plt.plot(x_values, y_values, color='red', label='Quadratic Trendline')
+    plt.plot(x_values, y_values, color='red', label='Trendline')
 
     # Annotate each point with the language key
     for i, lang in enumerate(languages):
@@ -239,7 +239,7 @@ def plot_total_words_by_elapsed_time():
 
     plt.xlabel('Elapsed Time (ms)')
     plt.ylabel('Total Words')
-    plt.title('Total Words by Elapsed Time with Quadratic Trendline')
+    plt.title('Total Words by Elapsed Time with Trendline')
     plt.grid()
     plt.legend()
     plt.tight_layout()
@@ -265,7 +265,7 @@ def plot_total_keys_by_elapsed_time():
     plt.scatter(elapsed_time, total_words, color='blue', label='Data Points')
 
     # Fit a quadratic polynomial to the data
-    coefficients = np.polyfit(elapsed_time, total_words, 2)
+    coefficients = np.polyfit(elapsed_time, total_words, 1)
     polynomial = np.poly1d(coefficients)
 
     # Create a range of x values for plotting the trendline
@@ -273,7 +273,7 @@ def plot_total_keys_by_elapsed_time():
     y_values = polynomial(x_values)
 
     # Plot the trendline
-    plt.plot(x_values, y_values, color='red', label='Quadratic Trendline')
+    plt.plot(x_values, y_values, color='red', label='Trendline')
 
     # Annotate each point with the language key
     for i, lang in enumerate(languages):
@@ -281,18 +281,38 @@ def plot_total_keys_by_elapsed_time():
 
     plt.xlabel('Elapsed Time (ms)')
     plt.ylabel('Total Keys')
-    plt.title('Total Keys by Elapsed Time with Quadratic Trendline')
+    plt.title('Total Keys by Elapsed Time with Trendline')
     plt.grid()
     plt.legend()
     plt.tight_layout()
     plt.savefig(f'tk_by_elapsed_time.png')
     plt.close()
 
+def plot_runtimes():
+    # load all files in dir with name like 'stats_*.json', use filename as series name and plot x value in file as "input size" and y value as "elapsed time"
+    files = [f for f in os.listdir('.') if os.path.isfile(f) and f.startswith('stats_') and f.endswith('.json')]
+
+    for file in files:
+        with open(file, 'r') as f:
+            data = json.load(f)
+            x = [d['x'] for d in data]
+            y = [d['y'] for d in data]
+            plt.plot(x, y, label=file.replace('.json', '').replace('stats_', ''))
+
+    plt.xlabel('Input Size (Bytes)')
+    plt.ylabel('Elapsed Time (ms)')
+    plt.title('Runtimes by Input Size')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'runtimes.png')
+    plt.close()
+
+
 # print("Visualizing the output")
 
 # print("Top 10 words")
 # plot_top_10()
-# plot_top_10_in_one()
+plot_top_10_in_one()
 
 # print("Zipf plot")
 # plot_zipf()
@@ -311,3 +331,6 @@ plot_frequency_histogram_in_one()
 # plot_total_words_w_and_wo_stopwords()
 # plot_total_words_by_elapsed_time()
 # plot_total_keys_by_elapsed_time()
+
+# print("Runtimes")
+# plot_runtimes()
