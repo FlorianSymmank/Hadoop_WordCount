@@ -295,12 +295,15 @@ def plot_runtimes():
     for file in files:
         with open(file, 'r') as f:
             data = json.load(f)
-            x = [d['x'] for d in data]
-            y = [d['y'] for d in data]
-            plt.plot(x, y, label=file.replace('.json', '').replace('stats_', ''))
+            x = [d['x'] for d in data] # input size
+            y = [d['y'] for d in data] # elapsed time
 
-    plt.xlabel('Input Size (Bytes)')
-    plt.ylabel('Elapsed Time (ms)')
+            # scale x to GB
+            x = [value / 1_073_741_824 for value in x]
+            plt.plot(y, x, label=file.replace('.json', '').replace('stats_', ''))
+
+    plt.ylabel('Input Size (GB)')
+    plt.xlabel('Elapsed Time (ms)')
     plt.title('Runtimes by Input Size')
     plt.legend()
     plt.tight_layout()
@@ -312,7 +315,7 @@ def plot_runtimes():
 
 # print("Top 10 words")
 # plot_top_10()
-plot_top_10_in_one()
+# plot_top_10_in_one()
 
 # print("Zipf plot")
 # plot_zipf()
@@ -322,7 +325,7 @@ plot_top_10_in_one()
 
 # print("Frequency Histogram")
 # plot_frequency_histogram()
-plot_frequency_histogram_in_one()
+# plot_frequency_histogram_in_one()
 
 # print("CDF")
 # plot_cdf()
@@ -332,5 +335,5 @@ plot_frequency_histogram_in_one()
 # plot_total_words_by_elapsed_time()
 # plot_total_keys_by_elapsed_time()
 
-# print("Runtimes")
-# plot_runtimes()
+print("Runtimes")
+plot_runtimes()
