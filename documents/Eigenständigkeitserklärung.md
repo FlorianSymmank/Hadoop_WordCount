@@ -9,6 +9,7 @@ entworfen, verfasst und/oder bearbeitet wurden, sind kenntlich gemacht und nachg
 | ChatGPT | Rechtschreibung/Grammatik/Stil Anpassung Modelle: GPT 4o (Mini),GPT o1 Prev. (Mini) | Stilistische Glättung | Kompletter Bericht | |
 | ChatGPT | Codegenerierung GPT 4o (Mini) | Effizienzsteigerung der Arbeitsabläufe | Gesamtes Repository | | 
 | GitHub Copilot | Codegenerierung | Effizienzsteigerung der Arbeitsabläufe | Gesamtes Repository | |
+| ChatGPT | Stichpunkterstellung | Effizienzsteigerung der Arbeitsabläufe | Gesamte Präsentation | Erstellte Dokumentation als Grundlage | 
 
 Im Anhang meiner Arbeit habe ich sämtliche KI-basierte Hilfsmittel angegeben. Ich
 versichere, dass ich keine KI-basierten Tools verwendet habe, deren Nutzung der Prüfer / die Prüferin
