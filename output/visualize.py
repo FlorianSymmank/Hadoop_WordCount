@@ -295,15 +295,17 @@ def plot_runtimes():
     for file in files:
         with open(file, 'r') as f:
             data = json.load(f)
-            x = [d['x'] for d in data] # input size
-            y = [d['y'] for d in data] # elapsed time
+            y = [d['x'] for d in data] # input size
+            x = [d['y'] for d in data] # elapsed time
 
-            # scale x to GB
-            x = [value / 1_073_741_824 for value in x]
+            # scale y to GB
+            y = [value / 1_073_741_824 for value in y]
+            # scale x to ms
+            x = [value / 1000 for value in x]
             plt.plot(y, x, label=file.replace('.json', '').replace('stats_', ''))
 
-    plt.ylabel('Input Size (GB)')
-    plt.xlabel('Elapsed Time (ms)')
+    plt.xlabel('Input Size (GB)')
+    plt.ylabel('Elapsed Time (ms)')
     plt.title('Runtimes by Input Size')
     plt.legend()
     plt.tight_layout()
