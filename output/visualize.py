@@ -305,7 +305,7 @@ def plot_runtimes():
             plt.plot(y, x, label=file.replace('.json', '').replace('stats_', ''))
 
     plt.xlabel('Input Size (GB)')
-    plt.ylabel('Elapsed Time (sek)')
+    plt.ylabel('Elapsed Time (sec)')
     plt.title('Runtimes by Input Size')
     plt.legend()
     plt.tight_layout()
