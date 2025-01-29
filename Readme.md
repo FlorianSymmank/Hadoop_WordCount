@@ -3,7 +3,8 @@
 Dataset is located in `data` folder and contains text files in different languages.  
 
 ## Stopwords
-Stopwords are located in `stopwords` folder and contains json files with stopwords for each language.
+Stopwords are located in `stopwords` folder and contains json files with stopwords for each language.  
+Combined Stopwords are in [stopwords.json](src/main/resources/stopwords.json).
 
 ## WordCount
 WordCount is a simple Hadoop job that counts the number of words in a text file.
