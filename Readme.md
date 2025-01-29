@@ -18,6 +18,11 @@ SortByCount is a simple Hadoop job that sorts the output of WordCount by count.
 - [SortByCountMapper](src/main/java/de/floriansymmank/SortByCountMapper.java)
 - [SortByCountReducer](src/main/java/de/floriansymmank/SortByCountReducer.java)
 
+## Dokumentation
+- [Präsentation](documents/Präsentation_Belegaufgabe_11_FlorianSymmank.pdf)
+- [Eigenständigkeitserklärung](documents/Eigenständigkeitserklärung.md)
+- [Belegaufgabe](documents/Belegaufgabe_11_FlorianSymmank.pdf)
+
 # How to run
 
 ## Requirements
