@@ -7,10 +7,15 @@ Stopwords are located in `stopwords` folder and contains json files with stopwor
 
 ## WordCount
 WordCount is a simple Hadoop job that counts the number of words in a text file.
+- [WordCountDriver](src/main/java/de/floriansymmank/WordCountDriver.java)  
+- [WordCountMapper](src/main/java/de/floriansymmank/WordCountMapper.java)
+- [WordCountReducer](src/main/java/de/floriansymmank/WordCountReducer.java)
 
 ## SortByCount
 SortByCount is a simple Hadoop job that sorts the output of WordCount by count.
-
+- [SortByCountDriver](src/main/java/de/floriansymmank/SortByCountDriver.java)
+- [SortByCountMapper](src/main/java/de/floriansymmank/SortByCountMapper.java)
+- [SortByCountReducer](src/main/java/de/floriansymmank/SortByCountReducer.java)
 
 # How to run
 
